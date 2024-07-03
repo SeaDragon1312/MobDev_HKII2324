@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //In thông báo
 fun main() {
     println("Use the val keyword when the value doesn't change.")
@@ -89,4 +90,97 @@ fun weather(city : String, low : Int, high : Int, chanceOfRain: Int) {
     println("Low temperature: $low, High temperature: $high")
     println("Chance of rain: $chanceOfRain%")
     println()
+=======
+//In thông báo
+fun main() {
+    println("Use the val keyword when the value doesn't change.")
+    println("Use the var keyword when the value can change.")
+    println("When you define a function, you define the parameters that can be passed to it.")
+    println("When you call a function, you pass arguments for the parameters.")
+    
+}
+//Sửa lỗi biên dịch
+fun main() {
+    println("New chat message from a friend")
+}
+//mau chuoi
+fun main() {
+    var discountPercentage: Int = 0
+    var offer: String = ""
+    val item = "Google Chromecast"
+    discountPercentage = 20
+    offer = "Sale - Up to $discountPercentage% discount on $item! Hurry up!"
+
+    println(offer)
+}
+// Ghép chuỗi
+fun main() {
+    val numberOfAdults = 20
+    val numberOfKids = 30
+    println("The total party size is: ${numberOfAdults + numberOfKids}")
+}
+//Định dạng thông báo
+fun main() {
+    val baseSalary = 5000
+    val bonusAmount = 1000
+    val totalSalary = "$baseSalary + $bonusAmount"
+    println("Congratulations for your bonus! You will receive a total of $totalSalary (additional bonus).")
+}
+//Triển khai các phép toán cơ bản
+fun main() {
+    val firstNumber = 10
+    val secondNumber = 5
+    val thirdNumber = 5
+    val result = add(firstNumber, secondNumber)
+
+    println("$firstNumber + $secondNumber = $result")
+
+}
+
+fun add(firstNumber: Int, secondNumber: Int): Int {
+    return firstNumber + secondNumber
+}
+
+fun subtract(firstNumber: Int, secondNumber: Int): Int {
+    return firstNumber - secondNumber
+}
+//Tham số mặc định
+fun displayAlertMessage( operatingSystem: String = "Unknown OS", emailId: String): String {
+    return "There is a new sign-in request on $operatingSystem for your Google Account $emailId."
+}
+//Máy đếm bước
+fun main() {
+    val steps = 4000
+    val caloriesBurned = pedometerStepsToCalories(steps);
+    println("Walking $steps steps burns $caloriesBurned calories")
+}
+fun pedometerStepsToCalories(numberOfSteps: Int): Double {
+    val caloriesBurnedForEachStep = 0.04
+    val totalCaloriesBurned = numberOfSteps * caloriesBurnedForEachStep
+    return totalCaloriesBurned
+}
+//So sánh tham số
+fun main() {
+    println(timeCompare(30, 10))
+    println(timeCompare(30, 30))
+    println(timeCompare(30, 40))
+}
+
+fun timeCompare(timeSpentToday: Int, timeSpentYesterday: Int) : Boolean {
+    return timeSpentToday > timeSpentYesterday
+}
+Di chuyển mã trùng lặp vào một hàm
+fun main() {
+    weather("Ankara", 27, 31, 82)
+    weather("Tokyo", 32, 36, 10)
+    weather("Cape Town", 59, 64, 2)
+    weather("Guatemala City", 50, 55, 7)
+}
+
+fun weather(city : String, low : Int, high : Int, chanceOfRain: Int) {
+    println("City: $city")
+    println("Low temperature: $low, High temperature: $high")
+    println("Chance of rain: $chanceOfRain%")
+    println()
+>>>>>>> 532044f014185be13b6b9b379192803645f3fc46
 }
