@@ -1,296 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8556db06-67c6-4cdd-86a1-51014f5ecebc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/migrations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/drawable-nodpi/bg_compose_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/app/src/test/java/com/example/myapplication/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradle/libs.versions.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex1/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/migrations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/androidTest/java/com/example/taskmanager/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/drawable-nodpi/ic_task_completed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/app/src/test/java/com/example/taskmanager/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradle/libs.versions.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex2/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/migrations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/androidTest/java/com/example/ex3compose/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/java/com/example/ex3compose/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/java/com/example/ex3compose/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/java/com/example/ex3compose/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/java/com/example/ex3compose/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/app/src/test/java/com/example/ex3compose/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradle/libs.versions.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Thư mục mới/Unit1 Pathway3 ex3/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/migrations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/java/com/example/myapplication/ui/theme/Type.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/drawable-nodpi/bg_compose_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/app/src/test/java/com/example/myapplication/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradle/libs.versions.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex1/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/migrations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/androidTest/java/com/example/taskmanager/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/java/com/example/taskmanager/ui/theme/Type.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/drawable-nodpi/ic_task_completed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/app/src/test/java/com/example/taskmanager/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradle/libs.versions.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unit1 Pathway3 ex2/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/migrations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/ex3compose/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ex3compose/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ex3compose/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ex3compose/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ex3compose/ui/theme/Type.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/ex3compose/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
+    <list default="true" id="c09848bb-716e-494a-9c2e-128dd961cc49" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/migrations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathway3ex3/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathway3ex3/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathway3ex3/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathway3ex3/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,22 +37,19 @@
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
   "associatedIndex": 6
 }]]></component>
-  <component name="ProjectId" id="2iiEhsvrl2IB6js6kLkBxqpd96i" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2iiKiZD16wUo76UKpK6ymBFGUrv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -333,7 +60,7 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="Ex3Compose.app.main" />
+      <module name="Pathway3ex3.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -403,38 +130,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8556db06-67c6-4cdd-86a1-51014f5ecebc" name="Changes" comment="" />
-      <created>1719965119811</created>
+      <changelist id="c09848bb-716e-494a-9c2e-128dd961cc49" name="Changes" comment="" />
+      <created>1719968085129</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1719965119811</updated>
+      <updated>1719968085129</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
