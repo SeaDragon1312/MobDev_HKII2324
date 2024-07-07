@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="name1">Monalisa</string>
+    <string name="name2">Girl with a Pearl Earring</string>
+    <string name="name3">Las menias</string>
+    <string name="author1">Leonaldo Da Vinci</string>
+    <string name="author2">Tracy Chevalier</string>
+    <string name="author3">Diego Velázquez</string>
+</resources>
