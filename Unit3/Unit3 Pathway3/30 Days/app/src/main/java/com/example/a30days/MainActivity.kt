@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -53,7 +54,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    ThirtyDaysApp()
                 }
             }
         }
@@ -98,8 +99,8 @@ fun ThirtyDaysItem(
         var expanded by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp)
-                .clickable { expanded = ! expanded }
+                .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)
+                .clickable { expanded = !expanded }
         ) {
             Text(
                 text = stringResource(dayTask.day),
@@ -115,7 +116,9 @@ fun ThirtyDaysItem(
             Image(
                 painter =  painterResource(id = dayTask.imageOfTheDay),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().clip(MaterialTheme.shapes.small)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(MaterialTheme.shapes.small)
             )
             if (expanded) {
                 Text(
@@ -142,13 +145,6 @@ fun ThirtyDaysTopBar(modifier : Modifier = Modifier) {
     )
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview
 @Composable
