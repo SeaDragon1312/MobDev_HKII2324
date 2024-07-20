@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2023 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <string name="app_name">City</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="list_fragment_label">City</string>
+    <string name="detail_fragment_label">City Info</string>
+
+    <string name="baseball">Hà Nội</string>
+    <string name="badminton">Hà Nội</string>
+    <string name="basketball">Hà Nội</string>
+    <string name="bowling">Hà Nội</string>
+    <string name="cycling">Hà Nội</string>
+    <string name="golf">Hà Nội</string>
+    <string name="running">Hà Nội</string>
+    <string name="soccer">Hà Nội</string>
+    <string name="swimming">Hà Nội</string>
+    <string name="table_tennis">Hà Nội</string>
+    <string name="tennis">Hà Nội</string>
+
+    <string name="sports_list_subtitle">Hà Nội: Thành Phố Ngàn Năm Văn Hiến và Sức Sống Hiện Đại</string>
+    <string name="sport_detail_text">
+        Hà Nội, thủ đô của Việt Nam, là một thành phố pha trộn giữa nét cổ kính và hiện đại. Nằm bên bờ sông Hồng, Hà Nội nổi tiếng với những khu phố cổ, nơi mà thời gian dường như đứng lại với những con ngõ nhỏ hẹp, những ngôi nhà mái ngói đỏ và các cửa hàng buôn bán nhộn nhịp. Thành phố cũng nổi bật với hồ Hoàn Kiếm, một biểu tượng văn hóa và lịch sử, nơi có Tháp Rùa uy nghiêm giữa lòng hồ.
+
+Bên cạnh vẻ đẹp cổ kính, Hà Nội còn phát triển mạnh mẽ với những tòa nhà chọc trời, trung tâm thương mại hiện đại và cơ sở hạ tầng tiên tiến. Những con đường lớn như Nguyễn Chí Thanh, Trần Duy Hưng luôn đông đúc xe cộ và người qua lại, tạo nên một không khí sôi động và đầy năng lượng.
+
+Hà Nội cũng là nơi tập trung nhiều di tích lịch sử và văn hóa như Lăng Chủ tịch Hồ Chí Minh, Văn Miếu - Quốc Tử Giám và nhiều bảo tàng quan trọng. Các lễ hội truyền thống và các món ăn đặc sản như phở, bún chả, và bánh cuốn cũng làm nên sự đặc biệt và thu hút của thành phố này.
+
+Không chỉ là trung tâm hành chính và chính trị, Hà Nội còn là nơi quy tụ những tinh hoa văn hóa và nghệ thuật của Việt Nam, với các nhà hát, rạp chiếu phim và những buổi biểu diễn nghệ thuật đầy màu sắc. Với sự giao thoa giữa truyền thống và hiện đại, Hà Nội luôn mang đến cho người dân và du khách những trải nghiệm thú vị và đầy cảm hứng.
+    </string>
+
+    <plurals name="player_count_caption">
+        <item quantity="one"></item>
+        <item quantity="other"></item>
+    </plurals>
+    <string name="olympic_caption"></string>
+
+    <string name="back_button">Back</string>
+</resources>
