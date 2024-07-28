@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.data
+package com.example.juicetracker.ui.theme
 
-import androidx.work.WorkInfo
-import kotlinx.coroutines.flow.Flow
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-interface BluromaticRepository {
-    val outputWorkInfo: Flow<WorkInfo>
-    fun applyBlur(blurLevel: Int)
-    fun cancelWork()
-}
+// Set of Material typography styles to start with
+val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    )
+)

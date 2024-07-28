@@ -13,14 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.example.juicetracker.data
 
-package com.example.bluromatic.data
+import android.content.Context
 
-import androidx.work.WorkInfo
-import kotlinx.coroutines.flow.Flow
-
-interface BluromaticRepository {
-    val outputWorkInfo: Flow<WorkInfo>
-    fun applyBlur(blurLevel: Int)
-    fun cancelWork()
+/**
+ * [AppContainer] implementation that provides instance of [RoomJuiceRepository]
+ */
+class AppDataContainer(private val context: Context) : AppContainer {
+    /**
+     * Implementation for [JuiceRepository]
+     */
+    override val juiceRepository: JuiceRepository by lazy {
+        RoomJuiceRepository(AppDatabase.getDatabase(context).juiceDao())
+    }
 }
