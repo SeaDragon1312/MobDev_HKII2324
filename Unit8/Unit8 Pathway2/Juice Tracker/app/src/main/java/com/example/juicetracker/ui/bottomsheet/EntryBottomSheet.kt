@@ -38,12 +38,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.example.juicetracker.R
 import com.example.juicetracker.data.Juice
+import com.example.juicetracker.data.JuiceColor
 import com.example.juicetracker.ui.JuiceTrackerViewModel
 import java.util.Locale
 
@@ -65,12 +67,15 @@ fun EntryBottomSheet(
         sheetPeekHeight = 0.dp,
         sheetContent = {
             Column {
-                SheetHeader()
+                SheetHeader(Modifier.padding(dimensionResource(R.dimen.padding_small)))
                 SheetForm(
                     juice = juice,
                     onUpdateJuice = juiceTrackerViewModel::updateCurrentJuice,
                     onCancel = onCancel,
-                    onSubmit = onSubmit
+                    onSubmit = onSubmit,
+                    modifier = Modifier.padding(
+                        horizontal = dimensionResource(R.dimen.padding_medium)
+                    )
                 )
             }
         }
@@ -81,9 +86,9 @@ fun EntryBottomSheet(
 
 @Composable
 fun SheetHeader(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(8.dp)) {
+    Column(modifier = modifier) {
         Text(
-            modifier = modifier.padding(8.dp),
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
             text = stringResource(R.string.bottom_sheet_headline),
             style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold)
         )
@@ -97,21 +102,38 @@ fun SheetForm(
     onUpdateJuice: (Juice) -> Unit,
     onCancel: () -> Unit,
     onSubmit: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
-    Column(modifier.padding(horizontal = 16.dp)) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
         TextInputRow(
             inputLabel = stringResource(R.string.juice_name),
             fieldValue = juice.name,
-            onValueChange = { name -> onUpdateJuice(juice.copy(name = name)) }
+            onValueChange = { name -> onUpdateJuice(juice.copy(name = name)) },
+            modifier = Modifier.fillMaxWidth()
         )
         TextInputRow(
             inputLabel = stringResource(R.string.juice_description),
             fieldValue = juice.description,
-            onValueChange = { description -> onUpdateJuice(juice.copy(description = description)) }
+            onValueChange = { description -> onUpdateJuice(juice.copy(description = description)) },
+            modifier = Modifier.fillMaxWidth()
+        )
+        ColorSpinnerRow(
+            colorSpinnerPosition = findColorIndex(juice.color),
+            onColorChange = { color ->
+                onUpdateJuice(juice.copy(color = JuiceColor.values()[color].name))
+            }
+        )
+        RatingInputRow(
+            rating = juice.rating,
+            onRatingChange = { rating -> onUpdateJuice(juice.copy(rating = rating)) }
         )
         ButtonRow(
-            modifier = Modifier.align(Alignment.CenterHorizontally),
+            modifier = Modifier
+                .align(Alignment.End)
+                .padding(bottom = dimensionResource(R.dimen.padding_medium)),
             onCancel = onCancel,
             onSubmit = onSubmit,
             submitButtonEnabled = juice.name.isNotEmpty()
@@ -127,8 +149,7 @@ fun ButtonRow(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier
-            .padding(bottom = 16.dp),
+        modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         OutlinedButton(
@@ -155,10 +176,11 @@ fun TextInputRow(
 ) {
     InputRow(inputLabel, modifier) {
         TextField(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_small)),
             value = fieldValue,
             onValueChange = onValueChange,
             singleLine = true,
+            maxLines = 1,
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = colorScheme.surface,
                 unfocusedContainerColor = colorScheme.surface,
@@ -176,18 +198,21 @@ fun InputRow(
     content: @Composable () -> Unit
 ) {
     Row(
-        modifier = modifier.padding(bottom = 8.dp),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = inputLabel,
             fontWeight = FontWeight.SemiBold,
-            modifier = modifier
-                .weight(1f)
-                .padding(end = 8.dp),
+            modifier = modifier.weight(1f)
         )
         Box(modifier = Modifier.weight(2f)) {
             content()
         }
     }
+}
+
+private fun findColorIndex(color: String): Int {
+    val juiceColor = JuiceColor.valueOf(color)
+    return JuiceColor.values().indexOf(juiceColor)
 }

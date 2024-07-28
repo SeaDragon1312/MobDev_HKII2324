@@ -31,11 +31,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.juicetracker.R
 import com.example.juicetracker.data.Juice
 
@@ -48,10 +48,20 @@ fun JuiceTrackerList(
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(vertical = 8.dp),
+        contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.padding_small)),
     ) {
         items(items = juices) { juice ->
-            JuiceTrackerListItem(juice, onDelete, onUpdate)
+            JuiceTrackerListItem(
+                juice = juice,
+                onDelete = onDelete,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onUpdate(juice) }
+                    .padding(
+                        vertical = dimensionResource(R.dimen.padding_small),
+                        horizontal = dimensionResource(R.dimen.padding_medium)
+                    )
+            )
         }
     }
 }
@@ -60,20 +70,14 @@ fun JuiceTrackerList(
 fun JuiceTrackerListItem(
     juice: Juice,
     onDelete: (Juice) -> Unit,
-    onUpdate: (Juice) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable {
-                onUpdate(juice)
-            }
-            .padding(vertical = 8.dp, horizontal = 16.dp),
+        modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         JuiceIcon(juice.color)
-        JuiceDetails(juice, modifier.weight(1f))
+        JuiceDetails(juice, Modifier.weight(1f))
         DeleteButton(
             onDelete = {
                 onDelete(juice)
@@ -91,7 +95,10 @@ fun JuiceDetails(juice: Juice, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
         )
         Text(juice.description)
-        RatingDisplay(rating = juice.rating, modifier = Modifier.padding(top = 8.dp))
+        RatingDisplay(
+            rating = juice.rating,
+            modifier = Modifier.padding(top = dimensionResource(R.dimen.padding_small))
+        )
     }
 }
 
