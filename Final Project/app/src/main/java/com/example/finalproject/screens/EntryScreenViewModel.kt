@@ -1,5 +1,3 @@
-package com.example.finalproject.screens
-
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
@@ -14,9 +12,9 @@ class EntryScreenViewModel : ViewModel() {
 }
 
 enum class GameType {
-    ADDITION,
-    SUBTRACTION,
-    MULTIPLICATION,
-    DIVISION,
-    MIXED
+    CLASSIC,
+    DUAL_ROW,
+    INPUT_BOXES,
+    CONNECTING_NUMBERS,
+    TIMED_CHALLENGE
 }
