@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.finalproject.screens.AddNumberScreen
 import com.example.finalproject.screens.ClassicModeScreen
 import com.example.finalproject.screens.ConnectingNumbersModeScreen
 import com.example.finalproject.screens.DualRowModeScreen
@@ -17,6 +18,10 @@ fun MainScreen() {
     NavHost(navController = navController, startDestination = "entry") {
         composable("entry") {
             EntryScreen(navController)
+        }
+        composable("addNumber/{gameType}") { backStackEntry ->
+            val gameType = GameType.valueOf(backStackEntry.arguments?.getString("gameType") ?: "")
+            AddNumberScreen(navController, gameType)
         }
         composable("classic") {
             ClassicModeScreen()

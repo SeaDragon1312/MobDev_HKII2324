@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.finalproject.Icon.BackButton
 import com.example.finalproject.R
 import com.example.finalproject.screens.ClassicModeScreen
 import com.example.finalproject.screens.ConnectingNumbersModeScreen
@@ -50,11 +51,14 @@ import com.example.finalproject.ui.theme.FinalProjectTheme
 //    }
 //}
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntryScreen(navController: NavController, viewModel: EntryScreenViewModel = viewModel()) {
     Scaffold(
         topBar = {
-            EntryScreenAppBar()
+            CenterAlignedTopAppBar(
+                title = { Text("Easy Math") }
+            )
         },
         content = { paddingValues ->
             EntryScreenContent(navController, viewModel, paddingValues)
@@ -110,13 +114,7 @@ fun GameTypeButton(gameType: GameType, navController: NavController, viewModel: 
     Card(
         onClick = {
             viewModel.selectGameType(gameType)
-            when (gameType) {
-                GameType.CLASSIC -> navController.navigate("classic")
-                GameType.DUAL_ROW -> navController.navigate("dualRow")
-                GameType.INPUT_BOXES -> navController.navigate("inputBoxes")
-                GameType.CONNECTING_NUMBERS -> navController.navigate("connectingNumbers")
-                GameType.TIMED_CHALLENGE -> navController.navigate("timedChallenge")
-            }
+            navController.navigate("addNumber/${gameType.name}")
         },
         colors = CardDefaults.cardColors(
             containerColor = Color(135, 206, 250),
@@ -142,7 +140,8 @@ fun GameTypeButton(gameType: GameType, navController: NavController, viewModel: 
 @Composable
 fun EntryScreenPreview() {
     FinalProjectTheme {
-        EntryScreen(rememberNavController())
+        val navController = rememberNavController()
+        EntryScreen(navController)
     }
 }
 
@@ -150,7 +149,8 @@ fun EntryScreenPreview() {
 @Composable
 fun EntryScreenContentPreview() {
     FinalProjectTheme {
-        EntryScreenContent(rememberNavController(), EntryScreenViewModel(), PaddingValues())
+        val navController = rememberNavController()
+        EntryScreenContent(navController, EntryScreenViewModel(), PaddingValues())
     }
 }
 
@@ -158,6 +158,7 @@ fun EntryScreenContentPreview() {
 @Composable
 fun GameTypeButtonPreview() {
     FinalProjectTheme {
-        GameTypeButton(GameType.CLASSIC, rememberNavController(), EntryScreenViewModel())
+        val navController = rememberNavController()
+        GameTypeButton(GameType.CLASSIC, navController, EntryScreenViewModel())
     }
 }

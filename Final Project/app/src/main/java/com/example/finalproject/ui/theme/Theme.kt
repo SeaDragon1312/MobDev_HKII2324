@@ -106,7 +106,7 @@ fun FinalProjectTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = lightColorScheme(),
         typography = Typography,
         content = content
     )
