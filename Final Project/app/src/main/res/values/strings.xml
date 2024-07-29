@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Final Project</string>
+    <string name="app_name">Math for kids</string>
+    <string name="multiple_choice">Multiple Choice</string>
+    <string name="up_and_down">Up and Down</string>
+    <string name="typing_mode">Typing Mode</string>
+    <string name="pokemon_mode">Pokemon Mode</string>
 </resources>
