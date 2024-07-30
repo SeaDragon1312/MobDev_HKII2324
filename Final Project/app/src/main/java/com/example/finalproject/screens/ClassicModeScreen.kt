@@ -70,7 +70,7 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                             }
                         }
                     }
-                    if (viewModel.message.value == "win") {
+                    if (viewModel.message.value == "") {
                         Text(
                             text = "Congratulations, you have won!!!",
                             color = Color.Green,
@@ -84,13 +84,23 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             Button(
-                                onClick = { navController.navigate("entry") },
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
                                 modifier = Modifier.weight(1f).padding(8.dp)
                             ) {
                                 Text("Play Again")
                             }
                             Button(
-                                onClick = { navController.navigate("entry") },
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
                                 modifier = Modifier.weight(1f).padding(8.dp)
                             ) {
                                 Text("Play Other Mode")

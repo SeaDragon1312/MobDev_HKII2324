@@ -32,7 +32,7 @@ fun MainScreen() {
             ClassicModeScreen(navController, viewModel)
         }
         composable("dualRow") {
-            DualRowModeScreen()
+            DualRowModeScreen(navController)
         }
         composable("inputBoxes") {
             InputBoxesModeScreen()
