@@ -56,7 +56,7 @@ fun AddNumberScreen(navController: NavController, gameType: GameType, viewModel:
                     Button(
                         onClick = {
                             viewModel.updateEnteredNumber(number)
-                            navController.navigate(gameType.name.lowercase())
+                            navController.navigate("classic?selectedNumber=$number")
                         },
                         modifier = Modifier.padding(16.dp)
                     ) {
