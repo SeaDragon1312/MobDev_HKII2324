@@ -11,6 +11,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.finalproject.Icon.BackButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -18,7 +19,8 @@ fun AddNumberScreen(navController: NavController, gameType: GameType, viewModel:
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Add Number To Play Game") }
+                title = { Text("Add Number To Play Game") },
+                navigationIcon = { BackButton(navController) }
             )
         },
         content = { paddingValues ->

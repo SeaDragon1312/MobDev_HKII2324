@@ -32,63 +32,87 @@ fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreen
             )
         },
         content = { paddingValues ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Text(text = "Choose numbers whose sum is ${viewModel.selectedNumber.value}")
-                LazyRow(
+            if (viewModel.gameWon.value) {
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
                 ) {
-                    items(viewModel.upperRowNumbers) { number ->
-                        Box(
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(50.dp)
-                                .clickable { viewModel.selectNumberForPlayer1(number) }
-                                .border(BorderStroke(2.dp, Color.Black)),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = number.toString(),
-                                fontSize = 16.sp,
-                            )
-                        }
+                    Text(
+                        text = "Congratulations, you have won!!!",
+                        color = Color.Green,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = Modifier.padding(top = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Button(onClick = { navController.navigate("entry") }) {
+                        Text("Play Again")
                     }
                 }
-                LazyRow(
+            } else {
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    items(viewModel.lowerRowNumbers) { number ->
-                        Box(
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(50.dp)
-                                .clickable { viewModel.selectNumberForPlayer2(number) }
-                                .border(BorderStroke(2.dp, Color.Black)),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = number.toString(),
-                                fontSize = 16.sp,
-                            )
+                    Text(text = "Choose numbers whose sum is ${viewModel.selectedNumber.value}")
+                    LazyRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        items(viewModel.upperRowNumbers.value) { number ->
+                            val index = viewModel.upperRowNumbers.value.indexOf(number)
+                            Box(
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .size(50.dp)
+                                    .clickable { viewModel.selectNumberForPlayer1(index) }
+                                    .border(BorderStroke(2.dp, viewModel.upperRowColors.value[index])),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = number.toString(),
+                                    fontSize = 16.sp,
+                                )
+                            }
                         }
                     }
+                    LazyRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        items(viewModel.lowerRowNumbers.value) { number ->
+                            val index = viewModel.lowerRowNumbers.value.indexOf(number)
+                            Box(
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .size(50.dp)
+                                    .clickable { viewModel.selectNumberForPlayer2(index) }
+                                    .border(BorderStroke(2.dp, viewModel.lowerRowColors.value[index])),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = number.toString(),
+                                    fontSize = 16.sp,
+                                )
+                            }
+                        }
+                    }
+                    Text(
+                        text = viewModel.message.value,
+                        color = if (viewModel.message.value.contains("Correct")) Color.Green else Color.Red,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = Modifier.padding(top = 16.dp)
+                    )
                 }
-                Text(
-                    text = viewModel.message.value,
-                    color = if (viewModel.message.value.contains("Correct")) Color.Green else Color.Red,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    modifier = Modifier.padding(top = 16.dp)
-                )
             }
         }
     )
