@@ -42,7 +42,10 @@ fun MainScreen() {
             DualRowModeScreen(navController, viewModel)
         }
         composable("inputBoxes?selectedNumber={selectedNumber}") { backStackEntry ->
-            InputBoxesModeScreen()
+            val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
+            val viewModel: InputBoxesModeScreenViewModel = viewModel()
+            viewModel.selectedNumber.value = selectedNumber
+            InputBoxesModeScreen(navController, viewModel)
         }
         composable("connectingNumbers?selectedNumber={selectedNumber}") { backStackEntry ->
             PokemonModeScreen()
