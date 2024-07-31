@@ -15,6 +15,6 @@ enum class GameType {
     CLASSIC,
     DUAL_ROW,
     INPUT_BOXES,
-    CONNECTING_NUMBERS,
-    TIMED_CHALLENGE
+    POKEMON,
+    EYE_TEST
 }

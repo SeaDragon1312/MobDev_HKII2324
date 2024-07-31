@@ -1,8 +1,6 @@
 package com.example.finalproject.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -10,37 +8,30 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.finalproject.Icon.BackButton
 import com.example.finalproject.R
+import com.example.finalproject.Icon.BackButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreenViewModel = viewModel()) {
-    val selectedNumber = viewModel.selectedNumber.value ?: 0
+fun EyeTestModeScreen(navController: NavController, selectedNumber: Int) {
+    val viewModel: EyeTestScreenViewModel = viewModel()
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Pokemon Mode") },
+                title = { Text("Eye Test Mode") },
                 navigationIcon = { BackButton(navController) }
             )
         },
         content = { paddingValues ->
-            Image(
-                painter = painterResource(id = R.drawable.math),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -94,42 +85,58 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
                     }
                 } else {
                     Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "Let's play pikachu, connect 2 number whose sum is $selectedNumber")
+                        Text(
+                            text = "Get 30 points to win",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
-                        Column {
-                            viewModel.numbers.value.forEachIndexed { rowIndex, row ->
-                                Row {
-                                    row.forEachIndexed { colIndex, number ->
-                                        val borderColor = viewModel.borderColors.value[rowIndex][colIndex]
-                                        Box(
-                                            modifier = Modifier
-                                                .size(50.dp)
-                                                .border(2.dp, borderColor)
-                                                .background(Color.White)
-                                                .clickable { /* Handle click */ },
-                                            contentAlignment = Alignment.Center
-                                        ) {
-                                            Text(
-                                                text = number.toString(),
-                                                fontSize = 16.sp,
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        Text(
+                            text = "Score: ${viewModel.score.value}",
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
-                        Button(onClick = { viewModel.validateSum() }) {
-                            Text("Check")
+                        Image(
+                            painter = painterResource(id = R.drawable.stawberry),
+                            contentDescription = "Strawberry",
+                            modifier = Modifier
+                                .size(100.dp)
+                                .clickable(enabled = !viewModel.isTopImageDone.value) { viewModel.onTopImageClick() }
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = { viewModel.onDoneClick() }) {
+                            Text("Done")
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            text = viewModel.validationMessage.value,
-                            color = if (viewModel.validationMessage.value == "Correct") Color.Green else Color.Red,
-                            fontSize = 16.sp
+                            text = "Selected Number: $selectedNumber",
+                            fontSize = 20.sp
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Image(
+                            painter = painterResource(id = R.drawable.stawberry),
+                            contentDescription = "Strawberry",
+                            modifier = Modifier
+                                .size(100.dp)
+                                .clickable(enabled = viewModel.isTopImageDone.value) { viewModel.onBottomImageClick() }
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = { viewModel.onSubmitClick(selectedNumber) }) {
+                            Text("Submit")
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = viewModel.resultText.value,
+                            color = viewModel.resultColor.value,
+                            fontSize = 20.sp
                         )
                     }
                 }
@@ -140,9 +147,7 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
 
 @Preview(showBackground = true)
 @Composable
-fun PokemonModeScreenPreview() {
+fun EyeTestModeScreenPreview() {
     val navController = rememberNavController()
-    val viewModel: PokemonModeScreenViewModel = viewModel()
-    viewModel.setEnteredNumber(30) // Initialize with a sample number
-    PokemonModeScreen(navController, viewModel)
+    EyeTestModeScreen(navController, selectedNumber = 10)
 }

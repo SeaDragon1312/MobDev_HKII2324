@@ -11,12 +11,12 @@ import com.example.finalproject.screens.ClassicModeScreen
 import com.example.finalproject.screens.ClassicModeScreenViewModel
 import com.example.finalproject.screens.DualRowModeScreen
 import com.example.finalproject.screens.DualRowModeScreenViewModel
+import com.example.finalproject.screens.EyeTestModeScreen
 import com.example.finalproject.screens.InputBoxesModeScreen
 import com.example.finalproject.screens.InputBoxesModeScreenViewModel
 import com.example.finalproject.screens.PokemonModeScreen
 import com.example.finalproject.screens.PokemonModeScreenViewModel
-import com.example.finalproject.screens.TimedChallengeModeScreenViewModel
-import com.example.finalproject.screens.TimedChallengeModeScreen
+import com.example.finalproject.screens.EyeTestScreenViewModel
 
 @Composable
 fun MainScreen() {
@@ -54,7 +54,8 @@ fun MainScreen() {
             PokemonModeScreen(navController, viewModel)
         }
         composable("timedChallenge?selectedNumber={selectedNumber}") { backStackEntry ->
-            TimedChallengeModeScreen()
+            val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
+            EyeTestModeScreen(navController, selectedNumber ?: 0)
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.finalproject.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,6 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,6 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.Icon.BackButton
+import com.example.finalproject.R
 import com.example.finalproject.ui.theme.FinalProjectTheme
 import kotlinx.coroutines.delay
 
@@ -34,6 +39,12 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
             )
         },
         content = { paddingValues ->
+            Image(
+                painter = painterResource(id = R.drawable.math),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -59,7 +70,8 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                                         .padding(8.dp)
                                         .size(50.dp)
                                         .clickable { viewModel.selectNumber(number) }
-                                        .border(BorderStroke(2.dp, borderColor)),
+                                        .border(BorderStroke(2.dp, borderColor))
+                                        .background(Color.White),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
