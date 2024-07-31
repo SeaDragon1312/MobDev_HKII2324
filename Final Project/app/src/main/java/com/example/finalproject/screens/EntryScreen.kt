@@ -20,7 +20,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.finalproject.Icon.BackButton
 import com.example.finalproject.R
 import com.example.finalproject.screens.ClassicModeScreen
-import com.example.finalproject.screens.ConnectingNumbersModeScreen
 import com.example.finalproject.screens.DualRowModeScreen
 import com.example.finalproject.screens.InputBoxesModeScreen
 import com.example.finalproject.screens.TimedChallengeModeScreen

@@ -70,7 +70,7 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                             }
                         }
                     }
-                    if (viewModel.message.value == "") {
+                    if (viewModel.message.value == "win") {
                         Text(
                             text = "Congratulations, you have won!!!",
                             color = Color.Green,

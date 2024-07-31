@@ -29,10 +29,19 @@ class ClassicModeScreenViewModel : ViewModel() {
     private fun generateNumbers() {
         numbers.clear()
         val uniqueNumbers = mutableSetOf<Int>()
+        val targetNumber = selectedNumber.value ?: 50
+        while (uniqueNumbers.size < 2) { // choose first number that not equal to target number and half of target number (if target number is even so half of it is equal to target number/2)
+            val random = (1..targetNumber).random()
+            if(random != targetNumber && random != targetNumber/2) {
+                uniqueNumbers.add(random)
+            }
+        }
+        uniqueNumbers.add(targetNumber - uniqueNumbers.first())
         while (uniqueNumbers.size < 30) { // 30 unique numbers
             uniqueNumbers.add((1..50).random())
         }
-        numbers.addAll(uniqueNumbers)
+        //Shuffle the unique numbers and add them to the list to ensure 2 first elements far from each other
+        numbers.addAll(uniqueNumbers.shuffled())
     }
 
     fun selectNumber(number: Int) {

@@ -9,9 +9,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.screens.AddNumberScreen
 import com.example.finalproject.screens.ClassicModeScreen
 import com.example.finalproject.screens.ClassicModeScreenViewModel
-import com.example.finalproject.screens.ConnectingNumbersModeScreen
 import com.example.finalproject.screens.DualRowModeScreen
+import com.example.finalproject.screens.DualRowModeScreenViewModel
 import com.example.finalproject.screens.InputBoxesModeScreen
+import com.example.finalproject.screens.InputBoxesModeScreenViewModel
+import com.example.finalproject.screens.PokemonModeScreen
+import com.example.finalproject.screens.PokemonModeScreenViewModel
+import com.example.finalproject.screens.TimedChallengeModeScreenViewModel
 import com.example.finalproject.screens.TimedChallengeModeScreen
 
 @Composable
@@ -31,16 +35,19 @@ fun MainScreen() {
             viewModel.selectedNumber.value = selectedNumber
             ClassicModeScreen(navController, viewModel)
         }
-        composable("dualRow") {
-            DualRowModeScreen(navController)
+        composable("dualRow?selectedNumber={selectedNumber}") { backStackEntry ->
+            val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
+            val viewModel: DualRowModeScreenViewModel = viewModel()
+            viewModel.selectedNumber.value = selectedNumber
+            DualRowModeScreen(navController, viewModel)
         }
-        composable("inputBoxes") {
+        composable("inputBoxes?selectedNumber={selectedNumber}") { backStackEntry ->
             InputBoxesModeScreen()
         }
-        composable("connectingNumbers") {
-            ConnectingNumbersModeScreen()
+        composable("connectingNumbers?selectedNumber={selectedNumber}") { backStackEntry ->
+            PokemonModeScreen()
         }
-        composable("timedChallenge") {
+        composable("timedChallenge?selectedNumber={selectedNumber}") { backStackEntry ->
             TimedChallengeModeScreen()
         }
     }
