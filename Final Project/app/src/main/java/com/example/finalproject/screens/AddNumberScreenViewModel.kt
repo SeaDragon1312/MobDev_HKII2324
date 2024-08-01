@@ -17,8 +17,8 @@ class AddNumberScreenViewModel : ViewModel() {
 
     fun validateNumber() {
         val number = _enteredNumber.value.toIntOrNull()
-        if (number == null || number < 10 || number > 50) {
-            _errorMessage.value = "Please enter a number between 10 and 50"
+        if (number == null || number > 15) {
+            _errorMessage.value = "Please enter a number less or equal to 15"
         } else {
             _errorMessage.value = ""
         }

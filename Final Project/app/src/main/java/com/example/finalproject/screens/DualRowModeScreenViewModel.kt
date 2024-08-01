@@ -20,6 +20,12 @@ class DualRowModeScreenViewModel : ViewModel() {
     val selectedNumber = mutableStateOf(10)
     val upperRowColors = mutableStateOf(List(10) { Color.Black })
     val lowerRowColors = mutableStateOf(List(10) { Color.Black })
+    private val _upperBorderColor = MutableStateFlow<List<Color>>(emptyList())
+    private val _lowerBorderColor = MutableStateFlow<List<Color>>(emptyList())
+
+    val upperBorderColor: StateFlow<List<Color>> get() = _upperBorderColor
+    val lowerBorderColor: StateFlow<List<Color>> get() = _lowerBorderColor
+//    val lowerBorderColor = mutableStateOf<List<Color>>(emptyList())
     private var selectedUpperIndex: Int? = null
     private var selectedLowerIndex: Int? = null
 
@@ -32,6 +38,8 @@ class DualRowModeScreenViewModel : ViewModel() {
         val targetNumber = selectedNumber.value
         _upperRowNumbers.value = List(10) { Random.nextInt(1, targetNumber + 1) }
         _lowerRowNumbers.value = List(10) { Random.nextInt(1, targetNumber + 1) }
+        _upperBorderColor.value = List(10) { Color.Black }
+        _lowerBorderColor.value = List(10) { Color.Black }
     }
 
     private fun startScrolling() {
@@ -46,15 +54,19 @@ class DualRowModeScreenViewModel : ViewModel() {
     private fun shiftLeft() {
         _upperRowNumbers.value = _upperRowNumbers.value.drop(1) + _upperRowNumbers.value.first()
         _lowerRowNumbers.value = _lowerRowNumbers.value.drop(1) + _lowerRowNumbers.value.first()
+        _upperBorderColor.value = _upperBorderColor.value.drop(1) + _upperBorderColor.value.first()
+        _lowerBorderColor.value = _lowerBorderColor.value.drop(1) + _lowerBorderColor.value.first()
     }
 
     fun selectUpperCell(index: Int) {
         if (selectedUpperIndex == index) {
             selectedUpperIndex = null
-            upperRowColors.value = upperRowColors.value.toMutableList().apply { this[index] = Color.Black }
+            _upperBorderColor.value = upperBorderColor.value.toMutableList().apply { this[index] = Color.Black }
+//            upperRowColors.value = upperRowColors.value.toMutableList().apply { this[index] = Color.Black }
         } else {
             selectedUpperIndex = index
-            upperRowColors.value = List(10) { i -> if (i == index) Color.Yellow else Color.Black }
+            _upperBorderColor.value = upperBorderColor.value.toMutableList().apply { this[index] = Color.Yellow }
+//            upperRowColors.value = List(10) { i -> if (i == index) Color.Yellow else Color.Black }
         }
         validateSelection()
     }
@@ -62,10 +74,12 @@ class DualRowModeScreenViewModel : ViewModel() {
     fun selectLowerCell(index: Int) {
         if (selectedLowerIndex == index) {
             selectedLowerIndex = null
-            lowerRowColors.value = lowerRowColors.value.toMutableList().apply { this[index] = Color.Black }
+            _lowerBorderColor.value = lowerBorderColor.value.toMutableList().apply { this[index] = Color.Black }
+//            lowerRowColors.value = lowerRowColors.value.toMutableList().apply { this[index] = Color.Black }
         } else {
             selectedLowerIndex = index
-            lowerRowColors.value = List(10) { i -> if (i == index) Color.Yellow else Color.Black }
+            _lowerBorderColor.value = lowerBorderColor.value.toMutableList().apply { this[index] = Color.Yellow }
+//            lowerRowColors.value = List(10) { i -> if (i == index) Color.Yellow else Color.Black }
         }
         validateSelection()
     }
@@ -78,8 +92,10 @@ class DualRowModeScreenViewModel : ViewModel() {
             val lowerValue = lowerRowNumbers.value[lowerIndex]
             val isValid = upperValue + lowerValue == selectedNumber.value
             val color = if (isValid) Color.Green else Color.Red
-            upperRowColors.value = upperRowColors.value.toMutableList().apply { this[upperIndex] = color }
-            lowerRowColors.value = lowerRowColors.value.toMutableList().apply { this[lowerIndex] = color }
+            _upperBorderColor.value = _upperBorderColor.value.toMutableList().apply { this[upperIndex] = color }
+            _lowerBorderColor.value = _lowerBorderColor.value.toMutableList().apply { this[lowerIndex] = color }
+//            upperRowColors.value = upperRowColors.value.toMutableList().apply { this[upperIndex] = color }
+//            lowerRowColors.value = lowerRowColors.value.toMutableList().apply { this[lowerIndex] = color }
             viewModelScope.launch {
                 delay(1000)
                 resetSelection()
@@ -90,7 +106,9 @@ class DualRowModeScreenViewModel : ViewModel() {
     private fun resetSelection() {
         selectedUpperIndex = null
         selectedLowerIndex = null
-        upperRowColors.value = List(10) { Color.Black }
-        lowerRowColors.value = List(10) { Color.Black }
+        _upperBorderColor.value = List(10) { Color.Black }
+        _lowerBorderColor.value = List(10) { Color.Black }
+//        upperRowColors.value = List(10) { Color.Black }
+//        lowerRowColors.value = List(10) { Color.Black }
     }
 }

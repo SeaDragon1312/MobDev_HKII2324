@@ -24,8 +24,8 @@ import com.example.finalproject.icons.BackButton
 fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreenViewModel = viewModel()) {
     val upperRowNumbers by viewModel.upperRowNumbers.collectAsState()
     val lowerRowNumbers by viewModel.lowerRowNumbers.collectAsState()
-    val upperRowColors by viewModel.upperRowColors
-    val lowerRowColors by viewModel.lowerRowColors
+    val upperRowColors by viewModel.upperBorderColor.collectAsState()
+    val lowerRowColors by viewModel.lowerBorderColor.collectAsState()
 
     Scaffold(
         topBar = {
@@ -42,6 +42,7 @@ fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreen
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
+                Text(text = "Choose 2 numbers whose sum is ${viewModel.selectedNumber.value}")
                 LazyRow(
                     modifier = Modifier
                         .fillMaxWidth()
