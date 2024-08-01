@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.finalproject.Icon.BackButton
+import com.example.finalproject.icons.BackButton
 import com.example.finalproject.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -143,6 +143,5 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
 fun PokemonModeScreenPreview() {
     val navController = rememberNavController()
     val viewModel: PokemonModeScreenViewModel = viewModel()
-    viewModel.setEnteredNumber(30) // Initialize with a sample number
     PokemonModeScreen(navController, viewModel)
 }

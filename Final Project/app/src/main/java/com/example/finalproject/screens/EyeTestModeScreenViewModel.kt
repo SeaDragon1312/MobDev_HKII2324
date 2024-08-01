@@ -36,7 +36,7 @@ class EyeTestScreenViewModel : ViewModel() {
         val totalClicks = topClicksFinal.value + bottomClicks.value
         if (totalClicks == selectedNumber) {
             resultText.value = "Correct"
-            resultColor.value = Color.Blue
+            resultColor.value = Color.Green
             score.value += 10
             if (score.value >= 30) {
                 gameWon.value = true

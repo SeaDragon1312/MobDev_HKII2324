@@ -47,10 +47,8 @@ fun MainScreen() {
             viewModel.selectedNumber.value = selectedNumber
             InputBoxesModeScreen(navController, viewModel)
         }
-        composable("connectingNumbers?selectedNumber={selectedNumber}") { backStackEntry ->
-            val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
+        composable("connectingNumbers") {
             val viewModel: PokemonModeScreenViewModel = viewModel()
-            viewModel.selectedNumber.value = selectedNumber
             PokemonModeScreen(navController, viewModel)
         }
         composable("timedChallenge?selectedNumber={selectedNumber}") { backStackEntry ->

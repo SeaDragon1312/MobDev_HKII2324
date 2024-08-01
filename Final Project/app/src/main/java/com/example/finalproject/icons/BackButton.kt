@@ -1,4 +1,4 @@
-package com.example.finalproject.Icon
+package com.example.finalproject.icons
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
