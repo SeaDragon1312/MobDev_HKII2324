@@ -3,6 +3,9 @@ package com.example.finalproject.screens
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class PokemonModeScreenViewModel : ViewModel() {
@@ -12,9 +15,14 @@ class PokemonModeScreenViewModel : ViewModel() {
     val validationMessage = mutableStateOf("")
     val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
+    val isRunOutOfTime = mutableStateOf(false)
+    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
+    private var firstSelected: Pair<Int, Int>? = null
+    private var secondSelected: Pair<Int, Int>? = null
 
     init {
         generateNumbers()
+        startCountdown()
     }
 
 //    fun setEnteredNumber(number: Int) {
@@ -22,21 +30,157 @@ class PokemonModeScreenViewModel : ViewModel() {
 //        generateNumbers()
 //    }
 
+    private fun startCountdown() {
+        viewModelScope.launch {
+            while (timeRemaining.value > 0) {
+                delay(1000)
+                timeRemaining.value -= 1
+            }
+            if (timeRemaining.value == 0) {
+                isRunOutOfTime.value = true
+            }
+        }
+    }
+
     private fun generateNumbers() {
         val targetNumber = selectedNumber.value ?: 10
         val randomNumbers = mutableListOf<Int>()
         while (randomNumbers.size < 25) {
             randomNumbers.add(Random.nextInt(1, targetNumber))
         }
-        numbers.value = randomNumbers.chunked(5)
-        borderColors.value = List(5) { List(5) { Color.Black } }
+
+        // Cover 5 x 5 matrix with 7 x 7 matrix that has 0 on the border
+
+        val innerMatrix = randomNumbers.chunked(5)
+        val outerMatrix = List(7) { MutableList(7) { 0 } }
+
+        for (i in 1..5) {
+            for (j in 1..5) {
+                outerMatrix[i][j] = innerMatrix[i - 1][j - 1]
+            }
+        }
+
+        numbers.value = outerMatrix
+        borderColors.value = List(7) { List(7) { Color.Black } }
     }
 
-    fun validateSum() {
-        // Implement validation logic if needed
+    fun onNumberClick(row: Int, col: Int) {
+        val currentColor = borderColors.value[row][col]
+        if (currentColor == Color.Yellow) {
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+            if (firstSelected == Pair(row, col)) {
+                firstSelected = null
+            } else {
+                secondSelected = null
+            }
+        } else {
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Yellow
+                }
+            }
+            if (firstSelected == null) {
+                firstSelected = Pair(row, col)
+            } else {
+                secondSelected = Pair(row, col)
+                checkSum()
+            }
+        }
     }
 
-    fun canConnectDirectly(board: Array<IntArray>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
+    private fun checkSum() {
+        val firstPos = firstSelected ?: return
+        val secondPos = secondSelected ?: return
+        val firstNumber = numbers.value[firstPos.first][firstPos.second]
+        val secondNumber = numbers.value[secondPos.first][secondPos.second]
+
+        if (firstNumber + secondNumber == 10 && canConnect(numbers.value, firstPos, secondPos)) {
+            updateBorderColor(Color.Green)
+            viewModelScope.launch {
+                delay(1000)
+                removeNumbers(firstPos, secondPos)
+                checkGameWon()
+            }
+        } else {
+            updateBorderColor(Color.Red)
+            checkGameWon()
+            viewModelScope.launch {
+                delay(1000)
+                resetSelection()
+            }
+        }
+    }
+
+    private fun removeNumbers(firstPos: Pair<Int, Int>, secondPos: Pair<Int, Int>) {
+        val updatedNumbers = numbers.value.toMutableList().map { it.toMutableList() }
+        updatedNumbers[firstPos.first][firstPos.second] = 0
+        updatedNumbers[secondPos.first][secondPos.second] = 0
+        numbers.value = updatedNumbers
+
+        resetSelection()
+    }
+
+    private fun checkGameWon() {
+        for (row in numbers.value.indices) {
+            for (col in numbers.value[row].indices) {
+                val number = numbers.value[row][col]
+                if (number != 0) {
+                    for (i in numbers.value.indices) {
+                        for (j in numbers.value[i].indices) {
+                            if ((i != row || j != col) && numbers.value[i][j] != 0 && number + numbers.value[i][j] == 10) {
+                                if (canConnect(numbers.value, Pair(row, col), Pair(i, j))) {
+                                    return
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        gameWon.value = true
+    }
+
+    private fun updateBorderColor(color: Color) {
+        firstSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = color
+                }
+            }
+        }
+        secondSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = color
+                }
+            }
+        }
+    }
+
+    private fun resetSelection() {
+        firstSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+        }
+        secondSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+        }
+        firstSelected = null
+        secondSelected = null
+    }
+
+    private fun canConnectDirectly(board: List<List<Int>>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
         if (start.first == end.first) { // same row
             val row = start.first
             for (col in (minOf(start.second, end.second) + 1) until maxOf(start.second, end.second)) {
@@ -57,7 +201,7 @@ class PokemonModeScreenViewModel : ViewModel() {
         return false
     }
 
-    fun canConnectWithOneBend(board: Array<IntArray>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
+    private fun canConnectWithOneBend(board: List<List<Int>>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
         val points = listOf(Pair(start.first, end.second), Pair(end.first, start.second))
         for (point in points) {
             if (board[point.first][point.second] == 0 &&
@@ -69,7 +213,7 @@ class PokemonModeScreenViewModel : ViewModel() {
         return false
     }
 
-    fun canConnectWithTwoBends(board: Array<IntArray>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
+    private fun canConnectWithTwoBends(board: List<List<Int>>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
         for (row in board.indices) {
             for (col in board[0].indices) {
                 if (board[row][col] == 0) {
@@ -87,7 +231,7 @@ class PokemonModeScreenViewModel : ViewModel() {
         return false
     }
 
-    fun canConnect(board: Array<IntArray>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
+    private fun canConnect(board: List<List<Int>>, start: Pair<Int, Int>, end: Pair<Int, Int>): Boolean {
         if (canConnectDirectly(board, start, end)) {
             return true
         }

@@ -30,6 +30,8 @@ import com.example.finalproject.ui.theme.FinalProjectTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreenViewModel = viewModel()) {
+    val timeRemaining = viewModel.timeRemaining.value
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -50,38 +52,11 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                     .padding(paddingValues),
                 contentAlignment = Alignment.Center
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(text = "Choose 2 numbers whose sum is ${viewModel.selectedNumber.value}")
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(5),
-                        modifier = Modifier
-                            .wrapContentHeight()
-                            .padding(16.dp)
+                if (viewModel.gameWon.value) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
-                        items(viewModel.numbers) { number ->
-                            if (number != -1) { // Only display numbers that are not marked as removed
-                                val borderColor = viewModel.borderColors[number] ?: Color.Black
-                                Box(
-                                    modifier = Modifier
-                                        .padding(8.dp)
-                                        .size(50.dp)
-                                        .clickable { viewModel.selectNumber(number) }
-                                        .border(BorderStroke(2.dp, borderColor))
-                                        .background(Color.White),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = number.toString(),
-                                        fontSize = 16.sp,
-                                    )
-                                }
-                            }
-                        }
-                    }
-                    if (viewModel.message.value == "win") {
                         Text(
                             text = "Congratulations, you have won!!!",
                             color = Color.Green,
@@ -101,7 +76,9 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(135, 206, 250)
                                 ),
-                                modifier = Modifier.weight(1f).padding(8.dp)
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
                             ) {
                                 Text("Play Again")
                             }
@@ -112,9 +89,92 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(135, 206, 250)
                                 ),
-                                modifier = Modifier.weight(1f).padding(8.dp)
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
                             ) {
                                 Text("Play Other Mode")
+                            }
+                        }
+                    }
+                } else if (viewModel.isRunOutOfTime.value) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "You're out of time :(",
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            modifier = Modifier.padding(top = 16.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Again")
+                            }
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Other Mode")
+                            }
+                        }
+                    }
+                }
+                else {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(text = "Choose 2 numbers whose sum is ${viewModel.selectedNumber.value}")
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(5),
+                            modifier = Modifier
+                                .wrapContentHeight()
+                                .padding(16.dp)
+                        ) {
+                            items(viewModel.numbers) { number ->
+                                if (number != -1) { // Only display numbers that are not marked as removed
+                                    val borderColor = viewModel.borderColors[number] ?: Color.Black
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .size(50.dp)
+                                            .clickable { viewModel.selectNumber(number) }
+                                            .border(BorderStroke(2.dp, borderColor))
+                                            .background(Color.White),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = number.toString(),
+                                            fontSize = 16.sp,
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
@@ -130,4 +190,22 @@ fun PreviewClassicModeScreen() {
     FinalProjectTheme {
         ClassicModeScreen(navController = rememberNavController())
     }
+}
+
+@Preview
+@Composable
+fun ClassicWinScreen() {
+    val navController = rememberNavController()
+    val viewModel: ClassicModeScreenViewModel = viewModel()
+    viewModel.gameWon.value = true
+    ClassicModeScreen(navController, viewModel)
+}
+
+@Preview
+@Composable
+fun ClassicLoseScreen() {
+    val navController = rememberNavController()
+    val viewModel: ClassicModeScreenViewModel = viewModel()
+    viewModel.isRunOutOfTime.value = true
+    ClassicModeScreen(navController, viewModel)
 }

@@ -23,7 +23,7 @@ import com.example.finalproject.icons.BackButton
 @Composable
 fun EyeTestModeScreen(navController: NavController, selectedNumber: Int) {
     val viewModel: EyeTestScreenViewModel = viewModel()
-
+    val timeRemaining = viewModel.timeRemaining.value
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -83,7 +83,53 @@ fun EyeTestModeScreen(navController: NavController, selectedNumber: Int) {
                             }
                         }
                     }
-                } else {
+                } else if (viewModel.isRunOutOfTime.value) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "You're out of time :(",
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            modifier = Modifier.padding(top = 16.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Again")
+                            }
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Other Mode")
+                            }
+                        }
+                    }
+                }
+                else {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -92,6 +138,8 @@ fun EyeTestModeScreen(navController: NavController, selectedNumber: Int) {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
+                        Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                        Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "Get 30 points to win",
                             fontSize = 20.sp,

@@ -16,10 +16,28 @@ class InputBoxesModeScreenViewModel : ViewModel() {
     val validationMessage = mutableStateOf("")
     val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
+    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
+    val isRunOutOfTime = mutableStateOf(false)
 
 //    fun setEnteredNumber(number: Int) {
 //        selectedNumber.value = number
 //    }
+
+    init {
+        startCountdown()
+    }
+
+    private fun startCountdown() {
+        viewModelScope.launch {
+            while (timeRemaining.value > 0) {
+                delay(1000)
+                timeRemaining.value -= 1
+            }
+            if (timeRemaining.value == 0) {
+                isRunOutOfTime.value = true
+            }
+        }
+    }
 
     fun validateSum() {
         val box1Number = box1Value.value.toIntOrNull()

@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -16,6 +17,9 @@ class ClassicModeScreenViewModel : ViewModel() {
     val selectedNumbers = mutableStateListOf<Int>()
     val message = mutableStateOf("")
     val messageColor = mutableStateOf(Color.Black)
+    val gameWon = mutableStateOf(false)
+    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
+    val isRunOutOfTime = mutableStateOf(false)
     val borderColors = mutableStateMapOf<Int, Color>().apply {
         for (i in 1..50) {
             this[i] = Color.Black
@@ -24,6 +28,19 @@ class ClassicModeScreenViewModel : ViewModel() {
 
     init {
         generateNumbers()
+        startCountdown()
+    }
+
+    private fun startCountdown() {
+        viewModelScope.launch {
+            while (timeRemaining.value > 0) {
+                delay(1000)
+                timeRemaining.value -= 1
+            }
+            if (timeRemaining.value == 0) {
+                isRunOutOfTime.value = true
+            }
+        }
     }
 
     private fun generateNumbers() {
@@ -71,7 +88,7 @@ class ClassicModeScreenViewModel : ViewModel() {
                 }
                 selectedNumbers.clear()
                 if (!hasValidPairs()) {
-                    message.value = "win"
+                    gameWon.value = true
                     messageColor.value = Color.Blue
                 }
             }
@@ -93,7 +110,7 @@ class ClassicModeScreenViewModel : ViewModel() {
         val target = selectedNumber.value ?: return false
         val numSet = numbers.filter { it != -1 }.toSet()
         for (num in numSet) {
-            if (target - num in numSet) {
+            if (target - num in numSet && target != num*2) {
                 return true
             }
         }

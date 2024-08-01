@@ -26,6 +26,7 @@ import com.example.finalproject.R
 @Composable
 fun InputBoxesModeScreen(navController: NavController, viewModel: InputBoxesModeScreenViewModel = viewModel()) {
     val selectedNumber = viewModel.selectedNumber.value ?: 0
+    val timeRemaining = viewModel.timeRemaining.value
 
     Scaffold(
         topBar = {
@@ -35,12 +36,6 @@ fun InputBoxesModeScreen(navController: NavController, viewModel: InputBoxesMode
             )
         },
         content = { paddingValues ->
-            Image(
-                painter = painterResource(id = R.drawable.math),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -92,11 +87,59 @@ fun InputBoxesModeScreen(navController: NavController, viewModel: InputBoxesMode
                             }
                         }
                     }
-                } else {
+                } else if (viewModel.isRunOutOfTime.value) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
+                        Text(
+                            text = "You're out of time :(",
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            modifier = Modifier.padding(top = 16.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Again")
+                            }
+                            Button(
+                                onClick = {
+                                    navController.navigate("entry")
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(135, 206, 250)
+                                ),
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp)
+                            ) {
+                                Text("Play Other Mode")
+                            }
+                        }
+                    }
+                }
+                else {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                        Spacer(modifier = Modifier.height(16.dp))
                         Text(text = "Let's get 50 points!", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(text = "Score: ${viewModel.score.value}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
@@ -160,4 +203,24 @@ fun InputBoxesModeScreenPreview() {
     // Dummy NavController for preview
     val navController = rememberNavController()
     InputBoxesModeScreen(navController)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun InputWinScreenPreview() {
+    // Dummy NavController for preview
+    val navController = rememberNavController()
+    val viewModel: InputBoxesModeScreenViewModel = viewModel()
+    viewModel.gameWon.value = true
+    InputBoxesModeScreen(navController, viewModel)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun InputLoseScreenPreview() {
+    // Dummy NavController for preview
+    val navController = rememberNavController()
+    val viewModel: InputBoxesModeScreenViewModel = viewModel()
+    viewModel.isRunOutOfTime.value = true
+    InputBoxesModeScreen(navController, viewModel)
 }

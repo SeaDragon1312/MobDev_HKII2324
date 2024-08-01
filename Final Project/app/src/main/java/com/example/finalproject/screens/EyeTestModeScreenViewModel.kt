@@ -3,6 +3,9 @@ package com.example.finalproject.screens
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class EyeTestScreenViewModel : ViewModel() {
     var topClicks = mutableStateOf(0)
@@ -14,6 +17,24 @@ class EyeTestScreenViewModel : ViewModel() {
     var isSubmitted = mutableStateOf(false)
     val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
+    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
+    val isRunOutOfTime = mutableStateOf(false)
+
+    init {
+        startCountdown()
+    }
+
+    private fun startCountdown() {
+        viewModelScope.launch {
+            while (timeRemaining.value > 0) {
+                delay(1000)
+                timeRemaining.value -= 1
+            }
+            if (timeRemaining.value == 0) {
+                isRunOutOfTime.value = true
+            }
+        }
+    }
 
     fun onTopImageClick() {
         if (!isTopImageDone.value) {
