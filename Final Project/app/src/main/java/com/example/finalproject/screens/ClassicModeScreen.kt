@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -30,6 +31,7 @@ import com.example.finalproject.ui.theme.FinalProjectTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreenViewModel = viewModel()) {
+    val selectedNumber = viewModel.selectedNumber.value ?: 0
     val timeRemaining = viewModel.timeRemaining.value
 
     Scaffold(
@@ -151,32 +153,45 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                         Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(text = "Choose 2 numbers whose sum is ${viewModel.selectedNumber.value}")
-                        LazyVerticalGrid(
-                            columns = GridCells.Fixed(5),
-                            modifier = Modifier
-                                .wrapContentHeight()
-                                .padding(16.dp)
-                        ) {
-                            items(viewModel.numbers) { number ->
-                                if (number != -1) { // Only display numbers that are not marked as removed
-                                    val borderColor = viewModel.borderColors[number] ?: Color.Black
-                                    Box(
-                                        modifier = Modifier
-                                            .padding(8.dp)
-                                            .size(50.dp)
-                                            .clickable { viewModel.selectNumber(number) }
-                                            .border(BorderStroke(2.dp, borderColor))
-                                            .background(Color.White),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(
-                                            text = number.toString(),
-                                            fontSize = 16.sp,
-                                        )
+                        Column {
+                            viewModel.numbers.value.forEachIndexed { rowIndex, row ->
+                                Row {
+                                    row.forEachIndexed { colIndex, number ->
+                                        if (number != 0) {
+                                            val borderColor = viewModel.borderColors.value[rowIndex][colIndex]
+                                            Box(
+                                                modifier = Modifier
+                                                    .padding(8.dp)
+                                                    .size(50.dp)
+                                                    .border(2.dp, borderColor)
+                                                    .background(Color.White)
+                                                    .clickable { viewModel.onNumberClick(rowIndex, colIndex) },
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(
+                                                    text = number.toString(),
+                                                    fontSize = 16.sp,
+                                                )
+                                            }
+                                        } else {
+                                            Box(
+                                                modifier = Modifier
+                                                    .padding(8.dp)
+                                                    .size(50.dp)
+                                                    .border(2.dp, Color.Transparent)
+                                                    .background(Color.Transparent),
+                                            )
+                                        }
                                     }
                                 }
                             }
                         }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = viewModel.validationMessage.value,
+                            color = if (viewModel.validationMessage.value == "Correct") Color.Green else Color.Red,
+                            fontSize = 16.sp
+                        )
                     }
                 }
             }

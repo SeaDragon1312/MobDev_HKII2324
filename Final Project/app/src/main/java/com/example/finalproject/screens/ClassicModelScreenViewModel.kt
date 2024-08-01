@@ -12,19 +12,16 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ClassicModeScreenViewModel : ViewModel() {
-    val numbers = mutableStateListOf<Int>()
-    val selectedNumber = mutableStateOf<Int?>(null)
-    val selectedNumbers = mutableStateListOf<Int>()
-    val message = mutableStateOf("")
-    val messageColor = mutableStateOf(Color.Black)
+    val selectedNumber = mutableStateOf(10)
+    val numbers = mutableStateOf<List<List<Int>>>(emptyList())
+    val borderColors = mutableStateOf<List<List<Color>>>(emptyList())
+    val validationMessage = mutableStateOf("")
+    val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
-    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
     val isRunOutOfTime = mutableStateOf(false)
-    val borderColors = mutableStateMapOf<Int, Color>().apply {
-        for (i in 1..50) {
-            this[i] = Color.Black
-        }
-    }
+    val timeRemaining = mutableStateOf(300) // 300 seconds countdown
+    private var firstSelected: Pair<Int, Int>? = null
+    private var secondSelected: Pair<Int, Int>? = null
 
     init {
         generateNumbers()
@@ -43,77 +40,141 @@ class ClassicModeScreenViewModel : ViewModel() {
         }
     }
 
-    private fun generateNumbers() {
-        numbers.clear()
-        val uniqueNumbers = mutableSetOf<Int>()
-        val targetNumber = selectedNumber.value ?: 50
-        while (uniqueNumbers.size < 2) { // choose first number that not equal to target number and half of target number (if target number is even so half of it is equal to target number/2)
-            val random = (1..targetNumber).random()
-            if(random != targetNumber && random != targetNumber/2) {
-                uniqueNumbers.add(random)
-            }
+    fun createMatrix(numbers: List<Int>, rows: Int, cols: Int): List<List<Int>> {
+        require(numbers.size >= rows * cols) {
+            "List must have at least ${rows * cols} elements."
         }
-        uniqueNumbers.add(targetNumber - uniqueNumbers.first())
-        while (uniqueNumbers.size < 30) { // 30 unique numbers
-            uniqueNumbers.add((1..50).random())
-        }
-        //Shuffle the unique numbers and add them to the list to ensure 2 first elements far from each other
-        numbers.addAll(uniqueNumbers.shuffled())
+
+        return numbers.take(rows * cols).chunked(cols)
     }
 
-    fun selectNumber(number: Int) {
-        if (selectedNumbers.contains(number)) {
-            selectedNumbers.remove(number)
-            borderColors[number] = Color.Black
-        } else if (selectedNumbers.size < 2) {
-            selectedNumbers.add(number)
-            borderColors[number] = Color.Yellow
+    private fun generateNumbers() {
+        val uniqueNumbers = mutableListOf<Int>()
+        val targetNumber = selectedNumber.value
+        val random = (1..targetNumber).random()
+        uniqueNumbers.add(random)
+        uniqueNumbers.add(targetNumber - uniqueNumbers.first())
+        while (uniqueNumbers.size < 30) { // 30 unique numbers
+            uniqueNumbers.add((1..targetNumber).random())
         }
-        if (selectedNumbers.size == 2) {
-            checkSum()
+        //Shuffle the unique numbers and add them to the list to ensure 2 first elements far from each other
+        val shuffledUniqueNumbers = uniqueNumbers.shuffled()
+        val matrix = createMatrix(shuffledUniqueNumbers,6, 5)
+        numbers.value = matrix
+        borderColors.value = List(6) { List(5) { Color.Black } }
+    }
+
+    fun onNumberClick(row: Int, col: Int) {
+        val currentColor = borderColors.value[row][col]
+        if (currentColor == Color.Yellow) {
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+            if (firstSelected == Pair(row, col)) {
+                firstSelected = null
+            } else {
+                secondSelected = null
+            }
+        } else {
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Yellow
+                }
+            }
+            if (firstSelected == null) {
+                firstSelected = Pair(row, col)
+            } else {
+                secondSelected = Pair(row, col)
+                checkSum()
+            }
         }
     }
 
     private fun checkSum() {
-        val sum = selectedNumbers.sum()
-        if (sum == selectedNumber.value) {
-            selectedNumbers.forEach { number ->
-                borderColors[number] = Color.Green
-            }
-            CoroutineScope(Dispatchers.Main).launch {
-                delay(500)
-                selectedNumbers.forEach { number ->
-                    numbers[numbers.indexOf(number)] = -1 // Mark the number as removed
-                    borderColors[number] = Color.Black
-                }
-                selectedNumbers.clear()
-                if (!hasValidPairs()) {
-                    gameWon.value = true
-                    messageColor.value = Color.Blue
-                }
+        val firstPos = firstSelected ?: return
+        val secondPos = secondSelected ?: return
+        val firstNumber = numbers.value[firstPos.first][firstPos.second]
+        val secondNumber = numbers.value[secondPos.first][secondPos.second]
+
+        if (firstNumber + secondNumber == selectedNumber.value) {
+            updateBorderColor(Color.Green)
+            viewModelScope.launch {
+                delay(1000)
+                removeNumbers(firstPos, secondPos)
+                checkGameWon()
             }
         } else {
-            selectedNumbers.forEach { number ->
-                borderColors[number] = Color.Red
-            }
-            CoroutineScope(Dispatchers.Main).launch {
-                delay(500)
-                selectedNumbers.forEach { number ->
-                    borderColors[number] = Color.Black
-                }
-                selectedNumbers.clear()
+            updateBorderColor(Color.Red)
+            checkGameWon()
+            viewModelScope.launch {
+                delay(1000)
+                resetSelection()
             }
         }
     }
 
-    private fun hasValidPairs(): Boolean {
-        val target = selectedNumber.value ?: return false
-        val numSet = numbers.filter { it != -1 }.toSet()
-        for (num in numSet) {
-            if (target - num in numSet && target != num*2) {
-                return true
+    private fun removeNumbers(firstPos: Pair<Int, Int>, secondPos: Pair<Int, Int>) {
+        val updatedNumbers = numbers.value.toMutableList().map { it.toMutableList() }
+        updatedNumbers[firstPos.first][firstPos.second] = 0
+        updatedNumbers[secondPos.first][secondPos.second] = 0
+        numbers.value = updatedNumbers
+
+        resetSelection()
+    }
+
+    private fun checkGameWon() {
+        for (row in numbers.value.indices) {
+            for (col in numbers.value[row].indices) {
+                val number = numbers.value[row][col]
+                if (number != 0) {
+                    for (i in numbers.value.indices) {
+                        for (j in numbers.value[i].indices) {
+                            if ((i != row || j != col) && numbers.value[i][j] != 0 && number + numbers.value[i][j] == selectedNumber.value) {
+                                return
+                            }
+                        }
+                    }
+                }
             }
         }
-        return false
+        gameWon.value = true
+    }
+
+    private fun updateBorderColor(color: Color) {
+        firstSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = color
+                }
+            }
+        }
+        secondSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = color
+                }
+            }
+        }
+    }
+
+    private fun resetSelection() {
+        firstSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+        }
+        secondSelected?.let { (row, col) ->
+            borderColors.value = borderColors.value.toMutableList().apply {
+                this[row] = this[row].toMutableList().apply {
+                    this[col] = Color.Black
+                }
+            }
+        }
+        firstSelected = null
+        secondSelected = null
     }
 }

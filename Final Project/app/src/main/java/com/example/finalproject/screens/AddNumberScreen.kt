@@ -49,7 +49,7 @@ fun AddNumberScreen(navController: NavController, gameType: GameType, viewModel:
                         viewModel.updateEnteredNumber(it)
                         viewModel.validateNumber()
                     },
-                    label = { Text("Enter a number between 10 and 50") },
+                    label = { Text("Enter a number less than 15") },
                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
                 )
                 if (viewModel.errorMessage.value.isNotEmpty()) {
@@ -63,7 +63,7 @@ fun AddNumberScreen(navController: NavController, gameType: GameType, viewModel:
                 Button(
                     onClick = {
                         val enteredNumber = viewModel.enteredNumber.value.toIntOrNull()
-                        if (enteredNumber != null && enteredNumber in 10..50) {
+                        if (enteredNumber != null && enteredNumber < 15) {
                             when (gameType) {
                                 GameType.CLASSIC -> navController.navigate("classic?selectedNumber=$enteredNumber")
                                 GameType.DUAL_ROW -> navController.navigate("dualRow?selectedNumber=$enteredNumber")

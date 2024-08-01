@@ -1,7 +1,5 @@
 package com.example.finalproject.screens
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,9 +11,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,12 +18,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.icons.BackButton
-import com.example.finalproject.R
-import com.example.finalproject.ui.theme.FinalProjectTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreenViewModel = viewModel()) {
+    val upperRowNumbers by viewModel.upperRowNumbers.collectAsState()
+    val lowerRowNumbers by viewModel.lowerRowNumbers.collectAsState()
+    val upperRowColors by viewModel.upperRowColors
+    val lowerRowColors by viewModel.lowerRowColors
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -37,94 +35,58 @@ fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreen
             )
         },
         content = { paddingValues ->
-            Image(
-                painter = painterResource(id = R.drawable.math),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
-            if (viewModel.gameWon.value) {
-                Column(
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                LazyRow(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                        .fillMaxWidth()
+                        .padding(16.dp)
                 ) {
-                    Text(
-                        text = "Congratulations, you have won!!!",
-                        color = Color.Green,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Button(onClick = { navController.navigate("entry") }) {
-                        Text("Play Again")
+                    items(upperRowNumbers) { number ->
+                        val index = upperRowNumbers.indexOf(number)
+                        Box(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .size(50.dp)
+                                .background(Color.White)
+                                .border(2.dp, upperRowColors[index])
+                                .clickable { viewModel.selectUpperCell(index) },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = number.toString(),
+                                fontSize = 16.sp,
+                            )
+                        }
                     }
                 }
-            } else {
-                Column(
+                LazyRow(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceEvenly
+                        .fillMaxWidth()
+                        .padding(16.dp)
                 ) {
-                    Text(text = "Choose numbers whose sum is ${viewModel.selectedNumber.value}")
-                    LazyRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) {
-                        items(viewModel.upperRowNumbers.value) { number ->
-                            val index = viewModel.upperRowNumbers.value.indexOf(number)
-                            Box(
-                                modifier = Modifier
-                                    .padding(8.dp)
-                                    .size(50.dp)
-                                    .clickable { viewModel.selectNumberForPlayer1(index) }
-                                    .background(Color.White)
-                                    .border(BorderStroke(2.dp, viewModel.upperRowColors.value[index])),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = number.toString(),
-                                    fontSize = 16.sp,
-                                )
-                            }
+                    items(lowerRowNumbers) { number ->
+                        val index = lowerRowNumbers.indexOf(number)
+                        Box(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .size(50.dp)
+                                .background(Color.White)
+                                .border(2.dp, lowerRowColors[index])
+                                .clickable { viewModel.selectLowerCell(index) },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = number.toString(),
+                                fontSize = 16.sp,
+                            )
                         }
                     }
-                    LazyRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) {
-                        items(viewModel.lowerRowNumbers.value) { number ->
-                            val index = viewModel.lowerRowNumbers.value.indexOf(number)
-                            Box(
-                                modifier = Modifier
-                                    .padding(8.dp)
-                                    .size(50.dp)
-                                    .clickable { viewModel.selectNumberForPlayer2(index) }
-                                    .background(Color.White)
-                                    .border(BorderStroke(2.dp, viewModel.lowerRowColors.value[index])),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = number.toString(),
-                                    fontSize = 16.sp,
-                                )
-                            }
-                        }
-                    }
-                    Text(
-                        text = viewModel.message.value,
-                        color = if (viewModel.message.value.contains("Correct")) Color.Green else Color.Red,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
                 }
             }
         }
@@ -134,7 +96,6 @@ fun DualRowModeScreen(navController: NavController, viewModel: DualRowModeScreen
 @Preview
 @Composable
 fun PreviewDualRowModeScreen() {
-    FinalProjectTheme {
-        DualRowModeScreen(navController = rememberNavController())
-    }
+    val navController = rememberNavController()
+    DualRowModeScreen(navController)
 }

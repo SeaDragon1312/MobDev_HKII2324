@@ -32,7 +32,7 @@ fun MainScreen() {
         composable("classic?selectedNumber={selectedNumber}") { backStackEntry ->
             val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
             val viewModel: ClassicModeScreenViewModel = viewModel()
-            viewModel.selectedNumber.value = selectedNumber
+            viewModel.selectedNumber.value = selectedNumber ?: 0
             ClassicModeScreen(navController, viewModel)
         }
         composable("dualRow?selectedNumber={selectedNumber}") { backStackEntry ->
