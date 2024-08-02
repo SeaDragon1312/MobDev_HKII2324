@@ -48,9 +48,7 @@ import com.example.finalproject.ui.theme.FinalProjectTheme
 fun EntryScreen(navController: NavController, viewModel: EntryScreenViewModel = viewModel()) {
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("Easy Math") }
-            )
+            EntryScreenAppBar()
         },
         content = { paddingValues ->
             EntryScreenContent(navController, viewModel, paddingValues)
@@ -78,6 +76,11 @@ fun EntryScreenContent(navController: NavController, viewModel: EntryScreenViewM
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Text(
+                text = "Choose a game type",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(16.dp))
             GameType.values().forEach { gameType ->
                 GameTypeButton(gameType, navController, viewModel)
             }
