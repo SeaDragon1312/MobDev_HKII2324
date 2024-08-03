@@ -16,5 +16,5 @@ enum class GameType {
     DUAL_ROW,
     INPUT_BOXES,
     POKEMON,
-    EYE_TEST
+    EYE_TEST,
 }

@@ -13,13 +13,13 @@ class PokemonModeScreenViewModel : ViewModel() {
     val numbers = mutableStateOf<List<List<Int>>>(emptyList())
     val borderColors = mutableStateOf<List<List<Color>>>(emptyList())
     val validationMessage = mutableStateOf("")
-    val score = mutableStateOf(0)
+//    val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
     val isRunOutOfTime = mutableStateOf(false)
     val timeRemaining = mutableStateOf(300) // 300 seconds countdown
     private var firstSelected: Pair<Int, Int>? = null
     private var secondSelected: Pair<Int, Int>? = null
-
+    val connectingLines = mutableStateOf<List<Pair<Pair<Int, Int>, Pair<Int, Int>>>>(emptyList())
     init {
         generateNumbers()
         startCountdown()
@@ -98,11 +98,47 @@ class PokemonModeScreenViewModel : ViewModel() {
         val firstNumber = numbers.value[firstPos.first][firstPos.second]
         val secondNumber = numbers.value[secondPos.first][secondPos.second]
 
+        // Add connecting lines elements
         if (firstNumber + secondNumber == 10 && canConnect(numbers.value, firstPos, secondPos)) {
+            when {
+                canConnectDirectly(numbers.value, firstPos, secondPos) -> {
+                    connectingLines.value = listOf(Pair(firstPos, secondPos))
+                }
+                canConnectWithOneBend(numbers.value, firstPos, secondPos) -> {
+                    val point = listOf(Pair(firstPos.first, secondPos.second), Pair(secondPos.first, firstPos.second))
+                        .first {numbers.value[it.first][it.second] == 0 && canConnectDirectly(numbers.value, firstPos, it) && canConnectDirectly(numbers.value, it, secondPos) }
+                    connectingLines.value = listOf(Pair(firstPos, point), Pair(point, secondPos))
+                }
+                canConnectWithTwoBends(numbers.value, firstPos, secondPos) -> {
+                    val points = mutableListOf<Pair<Int, Int>>()
+                    for (row in numbers.value.indices) {
+                        for (col in numbers.value[0].indices) {
+                            if (numbers.value[row][col] == 0) {
+                                if (canConnectWithOneBend(numbers.value, firstPos, Pair(row, col)) &&
+                                    canConnectDirectly(numbers.value, Pair(row, col), secondPos)) {
+                                    points.add(Pair(row, col))
+                                    break
+                                }
+//                                if (canConnectWithOneBend(numbers.value, Pair(row, col), secondPos) &&
+//                                    canConnectDirectly(numbers.value, firstPos, Pair(row, col))) {
+//                                    points.add(Pair(row, col))
+//                                    break
+//                                }
+                            }
+                        }
+                    }
+                    val point2 = points[0] // The point connect to the end point
+                    val point1 = listOf(Pair(firstPos.first, point2.second), Pair(point2.first, firstPos.second))
+                        .first {numbers.value[it.first][it.second] == 0 && canConnectDirectly(numbers.value, firstPos, it) && canConnectDirectly(numbers.value, it, point2) }
+                    connectingLines.value = listOf(Pair(firstPos, point1), Pair(point1, point2), Pair(point2, secondPos))
+                }
+            }
             updateBorderColor(Color.Green)
+//            connectingLine.value = Pair(firstPos, secondPos)
             viewModelScope.launch {
                 delay(1000)
                 removeNumbers(firstPos, secondPos)
+                connectingLines.value = emptyList()
                 checkGameWon()
             }
         } else {

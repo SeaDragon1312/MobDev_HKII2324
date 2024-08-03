@@ -40,7 +40,7 @@ class ClassicModeScreenViewModel : ViewModel() {
         }
     }
 
-    fun createMatrix(numbers: List<Int>, rows: Int, cols: Int): List<List<Int>> {
+    private fun createMatrix(numbers: List<Int>, rows: Int, cols: Int): List<List<Int>> {
         require(numbers.size >= rows * cols) {
             "List must have at least ${rows * cols} elements."
         }

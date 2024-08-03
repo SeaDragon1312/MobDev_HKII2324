@@ -1,5 +1,6 @@
 package com.example.finalproject.screens
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -9,7 +10,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -27,6 +31,7 @@ import com.example.finalproject.icons.BackButton
 fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreenViewModel = viewModel()) {
     val selectedNumber = viewModel.selectedNumber.value ?: 0
     val timeRemaining = viewModel.timeRemaining.value
+    val connectingLines by viewModel.connectingLines
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -66,7 +71,7 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
                         ) {
                             Button(
                                 onClick = {
-                                    navController.navigate("entry")
+                                    navController.navigate("connectingNumbers")
                                 },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(135, 206, 250)
@@ -111,7 +116,7 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
                         ) {
                             Button(
                                 onClick = {
-                                    navController.navigate("entry")
+                                    navController.navigate("connectingNumbers")
                                 },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(135, 206, 250)
@@ -184,6 +189,21 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
                             fontSize = 16.sp
                         )
                     }
+                    connectingLines?.forEach() { (start, end) ->
+                        Canvas(modifier = Modifier.fillMaxSize()) {
+                            val startX = start.second * 50.dp.toPx() + 72.dp.toPx()
+                            val startY = start.first * 50.dp.toPx() + 290.dp.toPx()
+                            val endX = end.second * 50.dp.toPx() + 72.dp.toPx()
+                            val endY = end.first * 50.dp.toPx() + 290.dp.toPx()
+                            drawLine(
+                                color = Color.Green,
+                                start = Offset(startX, startY),
+                                end = Offset(endX, endY),
+                                strokeWidth = 4.dp.toPx(),
+                                cap = StrokeCap.Round
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -198,20 +218,20 @@ fun PokemonModeScreenPreview() {
     PokemonModeScreen(navController, viewModel)
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PokemonWinScreenPreview() {
-    val navController = rememberNavController()
-    val viewModel: PokemonModeScreenViewModel = viewModel()
-    viewModel.gameWon.value = true
-    PokemonModeScreen(navController, viewModel)
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PokemonLoseScreenPreview() {
-    val navController = rememberNavController()
-    val viewModel: PokemonModeScreenViewModel = viewModel()
-    viewModel.isRunOutOfTime.value = true
-    PokemonModeScreen(navController, viewModel)
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PokemonWinScreenPreview() {
+//    val navController = rememberNavController()
+//    val viewModel: PokemonModeScreenViewModel = viewModel()
+//    viewModel.gameWon.value = true
+//    PokemonModeScreen(navController, viewModel)
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun PokemonLoseScreenPreview() {
+//    val navController = rememberNavController()
+//    val viewModel: PokemonModeScreenViewModel = viewModel()
+//    viewModel.isRunOutOfTime.value = true
+//    PokemonModeScreen(navController, viewModel)
+//}
