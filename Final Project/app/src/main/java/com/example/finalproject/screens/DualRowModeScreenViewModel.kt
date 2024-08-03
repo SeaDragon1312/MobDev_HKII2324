@@ -31,7 +31,7 @@ class DualRowModeScreenViewModel : ViewModel() {
 
     init {
         generateNumbers()
-        startScrolling()
+//        startScrolling()
     }
 
     fun generateNumbers() {

@@ -13,7 +13,6 @@ class PokemonModeScreenViewModel : ViewModel() {
     val numbers = mutableStateOf<List<List<Int>>>(emptyList())
     val borderColors = mutableStateOf<List<List<Color>>>(emptyList())
     val validationMessage = mutableStateOf("")
-//    val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
     val isRunOutOfTime = mutableStateOf(false)
     val timeRemaining = mutableStateOf(300) // 300 seconds countdown
@@ -24,11 +23,6 @@ class PokemonModeScreenViewModel : ViewModel() {
         generateNumbers()
         startCountdown()
     }
-
-//    fun setEnteredNumber(number: Int) {
-//        selectedNumber.value = number
-//        generateNumbers()
-//    }
 
     private fun startCountdown() {
         viewModelScope.launch {
@@ -114,16 +108,12 @@ class PokemonModeScreenViewModel : ViewModel() {
                     for (row in numbers.value.indices) {
                         for (col in numbers.value[0].indices) {
                             if (numbers.value[row][col] == 0) {
+                                // Find the first point that can connect with the second point directly and the first point with one bend
                                 if (canConnectWithOneBend(numbers.value, firstPos, Pair(row, col)) &&
                                     canConnectDirectly(numbers.value, Pair(row, col), secondPos)) {
                                     points.add(Pair(row, col))
                                     break
                                 }
-//                                if (canConnectWithOneBend(numbers.value, Pair(row, col), secondPos) &&
-//                                    canConnectDirectly(numbers.value, firstPos, Pair(row, col))) {
-//                                    points.add(Pair(row, col))
-//                                    break
-//                                }
                             }
                         }
                     }
@@ -134,7 +124,6 @@ class PokemonModeScreenViewModel : ViewModel() {
                 }
             }
             updateBorderColor(Color.Green)
-//            connectingLine.value = Pair(firstPos, secondPos)
             viewModelScope.launch {
                 delay(1000)
                 removeNumbers(firstPos, secondPos)
