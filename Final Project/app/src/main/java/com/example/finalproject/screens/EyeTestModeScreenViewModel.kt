@@ -19,6 +19,7 @@ class EyeTestScreenViewModel : ViewModel() {
     val gameWon = mutableStateOf(false)
     val timeRemaining = mutableStateOf(300) // 300 seconds countdown
     val isRunOutOfTime = mutableStateOf(false)
+    val shownMessage = mutableStateOf(false)
 
     init {
         startCountdown()
@@ -54,6 +55,7 @@ class EyeTestScreenViewModel : ViewModel() {
     }
 
     fun onSubmitClick(selectedNumber: Int) {
+        shownMessage.value = true
         val totalClicks = topClicksFinal.value + bottomClicks.value
         if (totalClicks == selectedNumber) {
             resultText.value = "Correct"
@@ -66,7 +68,11 @@ class EyeTestScreenViewModel : ViewModel() {
             resultText.value = "Incorrect"
             resultColor.value = Color.Red
         }
-        resetClicks()
+        viewModelScope.launch {
+            delay(1000)
+            shownMessage.value = false
+            resetClicks()
+        }
     }
 
     private fun resetClicks() {

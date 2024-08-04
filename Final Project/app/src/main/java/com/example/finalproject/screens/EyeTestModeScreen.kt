@@ -181,11 +181,13 @@ fun EyeTestModeScreen(navController: NavController, selectedNumber: Int) {
                             Text("Submit")
                         }
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = viewModel.resultText.value,
-                            color = viewModel.resultColor.value,
-                            fontSize = 20.sp
-                        )
+                        if (viewModel.shownMessage.value) {
+                            Text(
+                                text = viewModel.resultText.value,
+                                color = viewModel.resultColor.value,
+                                fontSize = 20.sp
+                            )
+                        }
                     }
                 }
             }

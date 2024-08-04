@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -191,9 +190,9 @@ fun PokemonModeScreen(navController: NavController, viewModel: PokemonModeScreen
                     }
                     connectingLines?.forEach() { (start, end) ->
                         Canvas(modifier = Modifier.fillMaxSize()) {
-                            val startX = start.second * 50.dp.toPx() + 72.dp.toPx()
+                            val startX = start.second * 50.dp.toPx() + 75.dp.toPx()
                             val startY = start.first * 50.dp.toPx() + 290.dp.toPx()
-                            val endX = end.second * 50.dp.toPx() + 72.dp.toPx()
+                            val endX = end.second * 50.dp.toPx() + 75.dp.toPx()
                             val endY = end.first * 50.dp.toPx() + 290.dp.toPx()
                             drawLine(
                                 color = Color.Green,

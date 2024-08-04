@@ -19,10 +19,6 @@ class InputBoxesModeScreenViewModel : ViewModel() {
     val timeRemaining = mutableStateOf(300) // 300 seconds countdown
     val isRunOutOfTime = mutableStateOf(false)
 
-//    fun setEnteredNumber(number: Int) {
-//        selectedNumber.value = number
-//    }
-
     init {
         startCountdown()
     }
