@@ -70,6 +70,7 @@ fun AddNumberScreen(navController: NavController, gameType: GameType, viewModel:
                                 GameType.INPUT_BOXES -> navController.navigate("inputBoxes?selectedNumber=$enteredNumber")
                                 GameType.POKEMON -> navController.navigate("connectingNumbers?selectedNumber=$enteredNumber")
                                 GameType.EYE_TEST -> navController.navigate("timedChallenge?selectedNumber=$enteredNumber")
+                                GameType.HIDDEN_CARD -> navController.navigate("hiddenCard?selectedNumber=$enteredNumber")
                             }
                         } else {
                             viewModel.validateNumber()

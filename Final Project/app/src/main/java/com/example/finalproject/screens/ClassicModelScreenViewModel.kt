@@ -12,7 +12,6 @@ class ClassicModeScreenViewModel : ViewModel() {
     val numbers = mutableStateOf<List<List<Int>>>(emptyList())
     val borderColors = mutableStateOf<List<List<Color>>>(emptyList())
     val validationMessage = mutableStateOf("")
-    val score = mutableStateOf(0)
     val gameWon = mutableStateOf(false)
     val isRunOutOfTime = mutableStateOf(false)
     val timeRemaining = mutableStateOf(300) // 300 seconds countdown

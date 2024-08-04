@@ -109,10 +109,16 @@ fun GameTypeButton(gameType: GameType, navController: NavController, viewModel: 
     Card(
         onClick = {
             viewModel.selectGameType(gameType)
-            if (gameType == GameType.POKEMON) {
-                navController.navigate("connectingNumbers")
-            } else {
-                navController.navigate("addNumber/${gameType.name}")
+            when (gameType) {
+                GameType.POKEMON -> {
+                    navController.navigate("connectingNumbers")
+                }
+                GameType.HIDDEN_CARD -> {
+                    navController.navigate("hiddenCard")
+                }
+                else -> {
+                    navController.navigate("addNumber/${gameType.name}")
+                }
             }
         },
         colors = CardDefaults.cardColors(

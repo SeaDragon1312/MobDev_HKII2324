@@ -16,7 +16,8 @@ import com.example.finalproject.screens.InputBoxesModeScreen
 import com.example.finalproject.screens.InputBoxesModeScreenViewModel
 import com.example.finalproject.screens.PokemonModeScreen
 import com.example.finalproject.screens.PokemonModeScreenViewModel
-import com.example.finalproject.screens.EyeTestScreenViewModel
+import com.example.finalproject.screens.HiddenCardScreen
+import com.example.finalproject.screens.HiddenCardScreenViewModel
 
 @Composable
 fun MainScreen() {
@@ -54,6 +55,10 @@ fun MainScreen() {
         composable("timedChallenge?selectedNumber={selectedNumber}") { backStackEntry ->
             val selectedNumber = backStackEntry.arguments?.getString("selectedNumber")?.toIntOrNull()
             EyeTestModeScreen(navController, selectedNumber ?: 0)
+        }
+        composable("hiddenCard?selectedNumber") {
+            val viewModel : HiddenCardScreenViewModel = viewModel()
+            HiddenCardScreen(navController, viewModel)
         }
     }
 }

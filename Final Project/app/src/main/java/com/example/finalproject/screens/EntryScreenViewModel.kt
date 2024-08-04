@@ -17,4 +17,5 @@ enum class GameType {
     INPUT_BOXES,
     POKEMON,
     EYE_TEST,
+    HIDDEN_CARD,
 }
