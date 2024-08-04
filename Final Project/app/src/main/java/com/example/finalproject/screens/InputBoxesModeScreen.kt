@@ -1,6 +1,5 @@
 package com.example.finalproject.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,8 +8,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,7 +17,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.icons.BackButton
-import com.example.finalproject.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -140,7 +136,7 @@ fun InputBoxesModeScreen(navController: NavController, viewModel: InputBoxesMode
                     ) {
                         Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text(text = "Let's get 50 points!", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                        Text(text = "Let's get 30 points!", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(text = "Score: ${viewModel.score.value}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))

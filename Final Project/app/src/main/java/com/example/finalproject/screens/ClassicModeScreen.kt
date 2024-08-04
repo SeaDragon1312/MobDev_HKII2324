@@ -1,15 +1,10 @@
 package com.example.finalproject.screens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,7 +26,7 @@ import com.example.finalproject.ui.theme.FinalProjectTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreenViewModel = viewModel()) {
-    val selectedNumber = viewModel.selectedNumber.value ?: 0
+    val selectedNumber = viewModel.selectedNumber.value
     val timeRemaining = viewModel.timeRemaining.value
 
     Scaffold(
@@ -152,7 +147,7 @@ fun ClassicModeScreen(navController: NavController, viewModel: ClassicModeScreen
                     ) {
                         Text(text = "Time left: $timeRemaining s", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text(text = "Choose 2 numbers whose sum is ${viewModel.selectedNumber.value}")
+                        Text(text = "Choose 2 numbers whose sum is $selectedNumber")
                         Column {
                             viewModel.numbers.value.forEachIndexed { rowIndex, row ->
                                 Row {

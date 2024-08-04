@@ -48,7 +48,7 @@ class InputBoxesModeScreenViewModel : ViewModel() {
                 box2BorderColor.value = Color.Green
                 validationMessage.value = "Correct"
                 score.value += 10
-                if (score.value >= 50) {
+                if (score.value >= 30) {
                     gameWon.value = true
                 }
             } else {
